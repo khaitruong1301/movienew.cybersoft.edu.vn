@@ -37,14 +37,14 @@ namespace bookingticketAPI.Filter
 
                     filterContext.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
                     filterContext.HttpContext.Response.HttpContext.Features.Get<IHttpResponseFeature>().ReasonPhrase = "Not Authorized";
-                    filterContext.Result = new ResponseEntity(StatusCodeConstants.FORBIDDEN, "Token không cybersoft không hợp lệ hoặc đã hết hạn truy cập !", MessageConstant.MESSAGE_SUCCESS_200);
+                    filterContext.Result = new ResponseEntity(StatusCodeConstants.FORBIDDEN, "Token không cybersoft không hợp lệ hoặc đã hết hạn truy cập !", MessageConstant.MESSAGE_ERROR_403);
 
 
                 }
 
             }catch (Exception ex)
             {
-                filterContext.Result = new ResponseEntity(StatusCodeConstants.FORBIDDEN, "Token không cybersoft không hợp lệ hoặc đã hết hạn truy cập !", MessageConstant.MESSAGE_SUCCESS_200);
+                filterContext.Result = new ResponseEntity(StatusCodeConstants.FORBIDDEN, "Token không cybersoft không hợp lệ hoặc đã hết hạn truy cập !", MessageConstant.MESSAGE_ERROR_403);
             }
 
         
