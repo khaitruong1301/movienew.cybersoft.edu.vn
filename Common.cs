@@ -16,7 +16,7 @@ namespace bookingticketAPI
         //public static readonly string Domain = "http://movieapi.cyberlearn.vn/";
         public static readonly string Domain = "https://localhost:44370/";
         //public static readonly string DomainImage = "https://localhost:44370/hinhanh/";
-        public static readonly string DomainImage = "http://movieapi.cyberlearn.vn/hinhanh/";
+        public static readonly string DomainImage = "http://movieapinew.cyberlearn.vn/hinhanh/";
 
         public class DateTimes
         {
