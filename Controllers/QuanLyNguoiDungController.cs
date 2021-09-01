@@ -316,6 +316,57 @@ namespace bookingticketAPI.Controllers
             //return Ok(ttTK);
         }
         [Authorize(Roles = "QuanTri")]
+
+        [HttpPost("LayThongTinNguoiDung")]
+        public async Task<ResponseEntity> LayThongTinNguoiDung(string taiKhoan)
+        {
+            
+
+            NguoiDung tt = db.NguoiDung.SingleOrDefault(n => n.TaiKhoan == taiKhoan);
+            if (tt == null)
+            {
+                // I wish to return an error response how can i do that?
+                //var response = await tbl.TBLoi(ThongBaoLoi.Loi400, "Tài khoản không hợp lệ!");
+                //return response;
+                return new ResponseEntity(StatusCodeConstants.BAD_REQUEST, "Tài khoản không hợp lệ!", MessageConstant.BAD_REQUEST);
+
+            }
+            IEnumerable<DatVe> lstDatVe = db.DatVe.Where(n => n.TaiKhoanNguoiDung == taiKhoan).ToList();
+            List<ThongTinDatVe> lstThongTinDatVe = new List<ThongTinDatVe>();
+            if (lstDatVe.Count() != 0)
+            {
+                foreach (var item in lstDatVe.GroupBy(n => n.MaLichChieu))
+                {
+                    ThongTinDatVe ttdv = new ThongTinDatVe();
+                    ttdv.MaVe = item.First().MaVe;
+                    foreach (var ghe in item)
+                    {
+                        Ghe gheNavigation = ghe.MaGheNavigation;
+                        Rap rap = ghe.MaGheNavigation.MaRapNavigation;
+                        CumRap cumRap = rap.MaCumRapNavigation;
+                        HeThongRap heThongRap = cumRap.MaHeThongRapNavigation;
+                        ThongTinGhe ttg = new ThongTinGhe() { MaCumRap = rap.TenRap, TenCumRap = rap.TenRap, MaGhe = ghe.MaGhe, TenGhe = gheNavigation.TenGhe, MaRap = gheNavigation.MaRap, TenRap = rap.TenRap, MaHeThongRap = heThongRap.MaHeThongRap, TenHeThongRap = cumRap.TenCumRap };
+                        ttdv.DanhSachGhe.Add(ttg);
+                    }
+                    ttdv.NgayDat = item.First().NgayDat.Value;
+                    ttdv.HinhAnh = DomainImage + item.First().MaLichChieuNavigation.MaPhimNavigation.HinhAnh;
+                    ttdv.TenPhim = item.First().MaLichChieuNavigation.MaPhimNavigation.TenPhim;
+                    ttdv.GiaVe = item.First().GiaVe.Value;
+                    ttdv.ThoiLuongPhim = item.First().MaLichChieuNavigation.ThoiLuong.Value;
+                    lstThongTinDatVe.Add(ttdv);
+
+                }
+
+            }
+
+            ThongTinTaiKhoanVM ttTK = Mapper.Map<NguoiDung, ThongTinTaiKhoanVM>(tt);
+            ttTK.ThongTinDatVe = lstThongTinDatVe;
+
+            return new ResponseEntity(StatusCodeConstants.OK, ttTK, MessageConstant.MESSAGE_SUCCESS_200);
+
+            //return Ok(ttTK);
+        }
+        [Authorize(Roles = "QuanTri")]
         [HttpPost("ThemNguoiDung")]
         public async Task<ResponseEntity> ThemNguoiDung(NguoiDungVM nd)
         {
