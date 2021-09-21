@@ -480,7 +480,7 @@ namespace bookingticketAPI.Controllers
                 //nguoiDungCapNhat.MaNhom = ndUpdate.MaNhom;
 
                 db.SaveChanges();
-                var result = new ThongTinTaiKhoanVM { TaiKhoan = nguoiDungCapNhat.TaiKhoan, MatKhau = nguoiDungCapNhat.MatKhau, HoTen = nguoiDungCapNhat.HoTen, Email = nguoiDungCapNhat.Email, SoDT = nguoiDungCapNhat.SoDt, MaNhom = nguoiDungCapNhat.MaNhom, LoaiNguoiDung = nguoiDungCapNhat.MaLoaiNguoiDungNavigation.TenLoai };
+                var result = new ThongTinTaiKhoanVM { TaiKhoan = nguoiDungCapNhat.TaiKhoan, MatKhau = nguoiDungCapNhat.MatKhau, HoTen = nguoiDungCapNhat.HoTen, Email = nguoiDungCapNhat.Email, SoDT = nguoiDungCapNhat.SoDt, MaNhom = nguoiDungCapNhat.MaNhom, MaLoaiNguoiDung = nguoiDungCapNhat.MaLoaiNguoiDungNavigation.TenLoai };
 
                 return new ResponseEntity(StatusCodeConstants.OK, result, MessageConstant.MESSAGE_SUCCESS_200);
 
@@ -568,7 +568,7 @@ namespace bookingticketAPI.Controllers
                 //nguoiDungCapNhat.MaNhom = ndUpdate.MaNhom;
 
                 db.SaveChanges();
-                var result = new ThongTinTaiKhoanVM { TaiKhoan = nguoiDungCapNhat.TaiKhoan, MatKhau = nguoiDungCapNhat.MatKhau, HoTen = nguoiDungCapNhat.HoTen, Email = nguoiDungCapNhat.Email, SoDT = nguoiDungCapNhat.SoDt, MaNhom = nguoiDungCapNhat.MaNhom, LoaiNguoiDung = nguoiDungCapNhat.MaLoaiNguoiDungNavigation.TenLoai };
+                var result = new ThongTinTaiKhoanVM { TaiKhoan = nguoiDungCapNhat.TaiKhoan, MatKhau = nguoiDungCapNhat.MatKhau, HoTen = nguoiDungCapNhat.HoTen, Email = nguoiDungCapNhat.Email, SoDT = nguoiDungCapNhat.SoDt, MaNhom = nguoiDungCapNhat.MaNhom, MaLoaiNguoiDung = nguoiDungCapNhat.MaLoaiNguoiDungNavigation.TenLoai };
 
                 return new ResponseEntity(StatusCodeConstants.OK, result, MessageConstant.MESSAGE_SUCCESS_200);
 
