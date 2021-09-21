@@ -13,7 +13,8 @@ namespace bookingticketAPI.Models.ViewModel
         public string Email { get; set; }
         public string SoDT { get; set; }
         public string MaNhom { get; set; }
-        public string LoaiNguoiDung { get; set; }
+        public string MaLoaiNguoiDung { get; set; }
+        public LoaiNguoiDung LoaiNguoiDung { get; set; }
         public IEnumerable<ThongTinDatVe> ThongTinDatVe { get; set; }
     }
 }
