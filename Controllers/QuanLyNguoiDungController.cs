@@ -309,6 +309,8 @@ namespace bookingticketAPI.Controllers
             }
 
             ThongTinTaiKhoanVM ttTK = Mapper.Map<NguoiDung, ThongTinTaiKhoanVM>(tt);
+            ttTK.MaLoaiNguoiDung = tttk.maLoaiNguoiDung;
+            ttTK.LoaiNguoiDung = db.LoaiNguoiDung.SingleOrDefault(n => n.MaLoaiNguoiDung == ttTK.MaLoaiNguoiDung);
             ttTK.ThongTinDatVe = lstThongTinDatVe;
 
             return new ResponseEntity(StatusCodeConstants.OK, ttTK, MessageConstant.MESSAGE_SUCCESS_200);
