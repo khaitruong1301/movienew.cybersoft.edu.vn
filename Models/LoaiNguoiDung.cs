@@ -15,4 +15,12 @@ namespace bookingticketAPI.Models
 
         public virtual ICollection<NguoiDung> NguoiDung { get; set; }
     }
+    public partial class LoaiNguoiDungVM
+    {
+       
+        public string MaLoaiNguoiDung { get; set; }
+        public string TenLoai { get; set; }
+
+     
+    }
 }

@@ -14,7 +14,7 @@ namespace bookingticketAPI.Models.ViewModel
         public string SoDT { get; set; }
         public string MaNhom { get; set; }
         public string MaLoaiNguoiDung { get; set; }
-        public LoaiNguoiDung LoaiNguoiDung { get; set; }
+        public LoaiNguoiDungVM LoaiNguoiDung { get; set; }
         public IEnumerable<ThongTinDatVe> ThongTinDatVe { get; set; }
     }
 }
