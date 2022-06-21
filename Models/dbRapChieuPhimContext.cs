@@ -194,7 +194,7 @@ namespace bookingticketAPI.Models
 
                 entity.Property(e => e.SecretKey).HasMaxLength(50);
 
-                entity.Property(e => e.SoDt)
+                entity.Property(e => e.SoDT)
                     .HasColumnName("SoDT")
                     .HasMaxLength(50);
 

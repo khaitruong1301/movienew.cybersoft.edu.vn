@@ -52,7 +52,7 @@ namespace bookingticketAPI.Controllers
             NguoiDung nguoiDungCapNhat = db.NguoiDung.SingleOrDefault(n => n.TaiKhoan == ndDN.TaiKhoan && n.MatKhau == ndDN.MatKhau);
             if (nguoiDungCapNhat != null)
             {
-                NguoiDungDangNhap nd = new NguoiDungDangNhap { TaiKhoan = nguoiDungCapNhat.TaiKhoan, HoTen = nguoiDungCapNhat.HoTen, Email = nguoiDungCapNhat.Email, SoDT = nguoiDungCapNhat.SoDt, MaNhom = nguoiDungCapNhat.MaNhom, MaLoaiNguoiDung = nguoiDungCapNhat.MaLoaiNguoiDung };
+                NguoiDungDangNhap nd = new NguoiDungDangNhap { TaiKhoan = nguoiDungCapNhat.TaiKhoan, HoTen = nguoiDungCapNhat.HoTen, Email = nguoiDungCapNhat.Email, SoDT = nguoiDungCapNhat.SoDT, MaNhom = nguoiDungCapNhat.MaNhom, MaLoaiNguoiDung = nguoiDungCapNhat.MaLoaiNguoiDung };
                 string accessToken = GenerateToken(nd);
                 nd.accessToken = accessToken;
                 return new ResponseEntity(StatusCodeConstants.OK, nd, MessageConstant.MESSAGE_SUCCESS_200);
@@ -100,7 +100,6 @@ namespace bookingticketAPI.Controllers
             ndInsert.MatKhau = nd.MatKhau;
             ndInsert.Email = nd.Email;
             ndInsert.MaNhom = nd.MaNhom;
-            ndInsert.SoDt = nd.SoDt;
             ndInsert.SoDT = nd.SoDt;
 
             ndInsert.MaLoaiNguoiDung = LoaiND.KhachHang;
@@ -157,14 +156,14 @@ namespace bookingticketAPI.Controllers
                 //var response = await tbl.TBLoi(ThongBaoLoi.Loi400, "Mã nhóm không hợp lệ!");
                 //return response;
             }
-            var lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.BiDanh.Contains(tuKhoa)).Select(n => new { n.TaiKhoan, n.HoTen, n.Email, n.SoDt, n.MatKhau,n.MaLoaiNguoiDung });
+            var lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.BiDanh.Contains(tuKhoa)).Select(n => new { n.TaiKhoan, n.HoTen, n.Email, n.SoDT, n.MatKhau,n.MaLoaiNguoiDung });
             if (lstResult.Count() == 0)
             {
-                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.TaiKhoan == tuKhoa).Select(n => new { n.TaiKhoan, n.HoTen, n.Email, n.SoDt, n.MatKhau, n.MaLoaiNguoiDung });
+                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.TaiKhoan == tuKhoa).Select(n => new { n.TaiKhoan, n.HoTen, n.Email, n.SoDT, n.MatKhau, n.MaLoaiNguoiDung });
             }
             if (lstResult.Count() == 0)
             {
-                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.SoDt.Contains(tuKhoa)).Select(n => new { n.TaiKhoan, n.HoTen, n.Email, n.SoDt, n.MatKhau ,n.MaLoaiNguoiDung});
+                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.SoDT.Contains(tuKhoa)).Select(n => new { n.TaiKhoan, n.HoTen, n.Email, n.SoDT, n.MatKhau ,n.MaLoaiNguoiDung});
             }
             return new ResponseEntity(StatusCodeConstants.OK, lstResult, MessageConstant.MESSAGE_SUCCESS_200);
 
@@ -182,14 +181,14 @@ namespace bookingticketAPI.Controllers
                 //var response = await tbl.TBLoi(ThongBaoLoi.Loi400, "Mã nhóm không hợp lệ!");
                 //return response;
             }
-            IEnumerable<NguoiDungVM> lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.BiDanh.Contains(tuKhoa)).Select(n => new NguoiDungVM {TaiKhoan= n.TaiKhoan,HoTen= n.HoTen, Email = n.Email, SoDt= n.SoDt,MatKhau= n.MatKhau,MaLoaiNguoiDung= n.MaLoaiNguoiDung });
+            IEnumerable<NguoiDungVM> lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.BiDanh.Contains(tuKhoa)).Select(n => new NguoiDungVM {TaiKhoan= n.TaiKhoan,HoTen= n.HoTen, Email = n.Email, SoDt= n.SoDT,MatKhau= n.MatKhau,MaLoaiNguoiDung= n.MaLoaiNguoiDung });
             if (lstResult.Count() == 0)
             {
-                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.TaiKhoan == tuKhoa).Select(n => new NguoiDungVM { TaiKhoan = n.TaiKhoan, HoTen = n.HoTen, Email = n.Email, SoDt = n.SoDt, MatKhau = n.MatKhau, MaLoaiNguoiDung = n.MaLoaiNguoiDung });
+                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.TaiKhoan == tuKhoa).Select(n => new NguoiDungVM { TaiKhoan = n.TaiKhoan, HoTen = n.HoTen, Email = n.Email, SoDt = n.SoDT, MatKhau = n.MatKhau, MaLoaiNguoiDung = n.MaLoaiNguoiDung });
             }
             if (lstResult.Count() == 0)
             {
-                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.SoDt.Contains(tuKhoa)).Select(n => new NguoiDungVM { TaiKhoan = n.TaiKhoan, HoTen = n.HoTen, Email = n.Email, SoDt = n.SoDt, MatKhau = n.MatKhau, MaLoaiNguoiDung = n.MaLoaiNguoiDung });
+                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.SoDT.Contains(tuKhoa)).Select(n => new NguoiDungVM { TaiKhoan = n.TaiKhoan, HoTen = n.HoTen, Email = n.Email, SoDt = n.SoDT, MatKhau = n.MatKhau, MaLoaiNguoiDung = n.MaLoaiNguoiDung });
             }
             //var model = PagingList.Create(lstResult, soPhanTuTrenTrang, soTrang);
             PaginationSet<NguoiDungVM> result = new PaginationSet<NguoiDungVM>();
@@ -215,14 +214,14 @@ namespace bookingticketAPI.Controllers
                 //return response;
 
             }
-            var lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.BiDanh.Contains(tuKhoa)).Select(n => new { n.TaiKhoan, n.HoTen, n.Email, n.SoDt, n.MatKhau ,n.MaLoaiNguoiDung});
+            var lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.BiDanh.Contains(tuKhoa)).Select(n => new { n.TaiKhoan, n.HoTen, n.Email, n.SoDT, n.MatKhau ,n.MaLoaiNguoiDung});
             if (lstResult.Count() == 0)
             {
-                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.TaiKhoan == tuKhoa).Select(n => new { n.TaiKhoan, n.HoTen, n.Email, n.SoDt, n.MatKhau, n.MaLoaiNguoiDung });
+                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.TaiKhoan == tuKhoa).Select(n => new { n.TaiKhoan, n.HoTen, n.Email, n.SoDT, n.MatKhau, n.MaLoaiNguoiDung });
             }
             if (lstResult.Count() == 0)
             {
-                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.SoDt.Contains(tuKhoa)).Select(n => new { n.TaiKhoan, n.HoTen, n.Email, n.SoDt, n.MatKhau, n.MaLoaiNguoiDung });
+                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.SoDT.Contains(tuKhoa)).Select(n => new { n.TaiKhoan, n.HoTen, n.Email, n.SoDT, n.MatKhau, n.MaLoaiNguoiDung });
             }
 
             return new ResponseEntity(StatusCodeConstants.OK, lstResult, MessageConstant.MESSAGE_SUCCESS_200);
@@ -243,14 +242,14 @@ namespace bookingticketAPI.Controllers
                 //return response;
 
             }
-            IEnumerable<NguoiDungVM> lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.BiDanh.Contains(tuKhoa)).Select(n => new NguoiDungVM { TaiKhoan= n.TaiKhoan,HoTen= n.HoTen,Email= n.Email,SoDt= n.SoDt,MatKhau= n.MatKhau,MaLoaiNguoiDung= n.MaLoaiNguoiDung });
+            IEnumerable<NguoiDungVM> lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.BiDanh.Contains(tuKhoa)).Select(n => new NguoiDungVM { TaiKhoan= n.TaiKhoan,HoTen= n.HoTen,Email= n.Email,SoDt= n.SoDT,MatKhau= n.MatKhau,MaLoaiNguoiDung= n.MaLoaiNguoiDung });
             if (lstResult.Count() == 0)
             {
-                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.TaiKhoan == tuKhoa).Select(n => new NguoiDungVM { TaiKhoan = n.TaiKhoan, HoTen = n.HoTen, Email = n.Email, SoDt = n.SoDt, MatKhau = n.MatKhau, MaLoaiNguoiDung = n.MaLoaiNguoiDung });
+                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.TaiKhoan == tuKhoa).Select(n => new NguoiDungVM { TaiKhoan = n.TaiKhoan, HoTen = n.HoTen, Email = n.Email, SoDt = n.SoDT, MatKhau = n.MatKhau, MaLoaiNguoiDung = n.MaLoaiNguoiDung });
             }
             if (lstResult.Count() == 0)
             {
-                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.SoDt.Contains(tuKhoa)).Select(n => new NguoiDungVM { TaiKhoan = n.TaiKhoan, HoTen = n.HoTen, Email = n.Email, SoDt = n.SoDt, MatKhau = n.MatKhau, MaLoaiNguoiDung = n.MaLoaiNguoiDung });
+                lstResult = db.NguoiDung.Where(n => n.MaNhom == MaNhom && n.SoDT.Contains(tuKhoa)).Select(n => new NguoiDungVM { TaiKhoan = n.TaiKhoan, HoTen = n.HoTen, Email = n.Email, SoDt = n.SoDT, MatKhau = n.MatKhau, MaLoaiNguoiDung = n.MaLoaiNguoiDung });
             }
             PaginationSet<NguoiDungVM> result = new PaginationSet<NguoiDungVM>();
             result.CurrentPage = soTrang;
@@ -494,13 +493,13 @@ namespace bookingticketAPI.Controllers
                 nguoiDungCapNhat.HoTen = nd.HoTen;
                 nguoiDungCapNhat.MatKhau = nd.MatKhau;
                 nguoiDungCapNhat.BiDanh = LoaiBoKyTu.bestLower(nd.HoTen);
-                nguoiDungCapNhat.SoDt = nd.SoDt;
+                nguoiDungCapNhat.SoDT = nd.SoDt;
                 nguoiDungCapNhat.MaLoaiNguoiDung = nd.MaLoaiNguoiDung;
                 nguoiDungCapNhat.Email = nd.Email;
                 //nguoiDungCapNhat.MaNhom = ndUpdate.MaNhom;
 
                 db.SaveChanges();
-                var result = new ThongTinTaiKhoanVM { TaiKhoan = nguoiDungCapNhat.TaiKhoan, MatKhau = nguoiDungCapNhat.MatKhau, HoTen = nguoiDungCapNhat.HoTen, Email = nguoiDungCapNhat.Email, SoDT = nguoiDungCapNhat.SoDt, MaNhom = nguoiDungCapNhat.MaNhom, MaLoaiNguoiDung = nguoiDungCapNhat.MaLoaiNguoiDungNavigation.TenLoai };
+                var result = new ThongTinTaiKhoanVM { TaiKhoan = nguoiDungCapNhat.TaiKhoan, MatKhau = nguoiDungCapNhat.MatKhau, HoTen = nguoiDungCapNhat.HoTen, Email = nguoiDungCapNhat.Email, SoDT = nguoiDungCapNhat.SoDT, MaNhom = nguoiDungCapNhat.MaNhom, MaLoaiNguoiDung = nguoiDungCapNhat.MaLoaiNguoiDungNavigation.TenLoai };
 
                 return new ResponseEntity(StatusCodeConstants.OK, result, MessageConstant.MESSAGE_SUCCESS_200);
 
@@ -582,13 +581,13 @@ namespace bookingticketAPI.Controllers
                 nguoiDungCapNhat.HoTen = nd.HoTen;
                 nguoiDungCapNhat.MatKhau = nd.MatKhau;
                 nguoiDungCapNhat.BiDanh = LoaiBoKyTu.bestLower(nd.HoTen);
-                nguoiDungCapNhat.SoDt = nd.SoDt;
+                nguoiDungCapNhat.SoDT = nd.SoDt;
                 nguoiDungCapNhat.MaLoaiNguoiDung = nd.MaLoaiNguoiDung;
                 nguoiDungCapNhat.Email = nd.Email;
                 //nguoiDungCapNhat.MaNhom = ndUpdate.MaNhom;
 
                 db.SaveChanges();
-                var result = new ThongTinTaiKhoanVM { TaiKhoan = nguoiDungCapNhat.TaiKhoan, MatKhau = nguoiDungCapNhat.MatKhau, HoTen = nguoiDungCapNhat.HoTen, Email = nguoiDungCapNhat.Email, SoDT = nguoiDungCapNhat.SoDt, MaNhom = nguoiDungCapNhat.MaNhom, MaLoaiNguoiDung = nguoiDungCapNhat.MaLoaiNguoiDungNavigation.TenLoai };
+                var result = new ThongTinTaiKhoanVM { TaiKhoan = nguoiDungCapNhat.TaiKhoan, MatKhau = nguoiDungCapNhat.MatKhau, HoTen = nguoiDungCapNhat.HoTen, Email = nguoiDungCapNhat.Email, SoDT = nguoiDungCapNhat.SoDT, MaNhom = nguoiDungCapNhat.MaNhom, MaLoaiNguoiDung = nguoiDungCapNhat.MaLoaiNguoiDungNavigation.TenLoai };
 
                 return new ResponseEntity(StatusCodeConstants.OK, result, MessageConstant.MESSAGE_SUCCESS_200);
 
