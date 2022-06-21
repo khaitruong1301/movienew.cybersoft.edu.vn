@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8pkjoAV8vgbkURX6uKCTWAX5duKRgcftmPez5CtvNxTIrQ/X/o45YpM6vvEuWUCDhfRIPPEkXtBZgcNi/ZypXw==",
+  "dgSpecHash": "IPS5R2w3RaE49mkue6FHQN/xMZZJCXGTRAI6i8oFHuTAsv3dZv+UZN9StU10yL6DqeiRP2vVBC80PknS2fhzyA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\Desktop\\moviecybersoft\\movieapi.cyberlearn.vn\\bookingticketAPI\\bookingticketAPI.csproj",
+  "projectFilePath": "C:\\Users\\HP\\Desktop\\movienew.cybersoft.edu.vn\\bookingticketAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\automapper\\8.1.1\\automapper.8.1.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\castle.core\\4.2.1\\castle.core.4.2.1.nupkg.sha512",

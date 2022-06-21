@@ -13027,11 +13027,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Desktop\\moviecybersoft\\movieapi.cyberlearn.vn\\bookingticketAPI\\bookingticketAPI.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\movienew.cybersoft.edu.vn\\bookingticketAPI.csproj",
       "projectName": "bookingticketAPI",
-      "projectPath": "C:\\Users\\HP\\Desktop\\moviecybersoft\\movieapi.cyberlearn.vn\\bookingticketAPI\\bookingticketAPI.csproj",
+      "projectPath": "C:\\Users\\HP\\Desktop\\movienew.cybersoft.edu.vn\\bookingticketAPI.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Desktop\\moviecybersoft\\movieapi.cyberlearn.vn\\bookingticketAPI\\obj\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\movienew.cybersoft.edu.vn\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13165,7 +13165,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   },
