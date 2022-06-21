@@ -101,6 +101,7 @@ namespace bookingticketAPI.Controllers
             ndInsert.Email = nd.Email;
             ndInsert.MaNhom = nd.MaNhom;
             ndInsert.SoDt = nd.SoDt;
+            ndInsert.SoDT = nd.SoDt;
 
             ndInsert.MaLoaiNguoiDung = LoaiND.KhachHang;
             ndInsert.BiDanh = LoaiBoKyTu.bestLower(ndInsert.HoTen);
